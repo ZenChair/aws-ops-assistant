@@ -1,1 +1,1 @@
-# aws-ops-assistant
+# AWS Ops Assistant
