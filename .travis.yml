@@ -2,5 +2,6 @@ language: go
 go:
   - 1.7
 script:
+  - make validate-syntax
   - make lint
   - make test
