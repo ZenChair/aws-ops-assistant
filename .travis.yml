@@ -1,7 +1,18 @@
 language: go
 go:
-  - 1.7
+- 1.7
 script:
-  - make validate-syntax
-  - make lint
-  - make test
+- make validate-syntax
+- make lint
+- make test
+deploy:
+  provider: s3
+  access_key_id: AKIAJ66QUD5PVZZWOCBQ
+  secret_access_key:
+    secure: KxMVVtpqDiYsYnSVLpsE6mSpUMC4jBjMeI0f3Dii7sH6hm0UPp11CZg3Q/XE8sNQ+i4w1gHMdNd6oUhkd5nlZQp0+7LhalfQ8JXYOlaA+baZDGv6+Ikq9zKxabzOzS1fjJriiVPxqKEUOq7qIXTXwnl+ARxTzJ3evcnX1oKyHO2vbt1gRb834j0bNOWHQYFgy67yVYvrQoQoqFZRD3/pnUQbv7J3W6r0I/ZtbfPWZArRYsUIVatVb7ptSWjqnGZp9GxTPBhG7y9pLFaee4Q2S4ujK01qjVaZvrIq1lCbeGfTeqX9g2iXeVInSjWjMxKJ/YaD9Px49SAhvYSzXjydE6L8I0ptjQL5DoXCs+XU8yQM8IF4t0Bz4fzARmY2fgRXngcB9ApHYQ8z/+x5ovwne0i8vrn4CsfYScSIIGc8aLLt9QUW9jDjYKv1AG7dQf6U4QMJoh4qRE8kpeExOEmctr8jgtFGjq6tIUtUfLh5ytB/6PvOwGAx0j23J6U+q5ab1kezXHgAOQEqJBuS1qrovqQqJ3VaViCRdvvlwaXWCddv3wehgpkPLl6qbHa0y8q7OZ5LGTorKTEm8+PBuGcU1VTsdyNLoAFqpT6Mhc8q3cUvy3skX29N2Y8vGf5ialPC2PZW7FJSSVVfx9E2GwOwMEKCQVw2qAchNF2Ja9pzgzQ=
+  bucket: awsopsassistant-experiment-artifact
+  region: ap-southeast-2
+  local-dir: experiment-src
+  acl: 'private'
+  on:
+    repo: ZenChair/aws-ops-assistant
