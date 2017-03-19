@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: AwsOpsAssistant build artifact bucket
+Resources:
+  ArtifactBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: awsopsassistant-experiment-artifact
+Outputs:
+  ArtifactBucketName:
+    Value: !Ref ArtifactBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-ArtifactBucket"

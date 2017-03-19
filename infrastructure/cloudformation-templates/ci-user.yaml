@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: AwsOpsAssistant CI group/user
+Parameters:
+  ArtifactBucketStackName:
+    Description: Bucket to store build artifacts
+    Type: String
+Resources:
+  TravisCiUser:
+    Type: "AWS::IAM::User"
+    Properties:
+      Groups:
+        - !Ref AwsOpsAssistantCiGroup
+      Path: "/"
+      UserName: TravisCI
+  AwsOpsAssistantCiGroup:
+    Type: "AWS::IAM::Group"
+    Properties:
+      GroupName: AwsOpsAssistantCI
+      Path: "/"
+      Policies:
+        - PolicyName: AwsOpsAssistantCI-201703191628
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Stmt1489901204000
+                Effect: Allow
+                Action:
+                  - s3:AbortMultipartUpload
+                  - s3:DeleteObject
+                  - s3:GetObject
+                  - s3:GetObjectAcl
+                  - s3:PutObject
+                  - s3:PutObjectAcl
+                Resource: !Sub
+                  - "arn:aws:s3:::${ArtifactBucketName}/*"
+                  - ArtifactBucketName:
+                      Fn::ImportValue:
+                        !Sub "${ArtifactBucketStackName}-ArtifactBucket"
+  TravisCiUserAccessKey:
+    Type: "AWS::IAM::AccessKey"
+    Properties:
+      UserName: !Ref TravisCiUser
+Outputs:
+  TravisCiUserAccessKeyId:
+    Value: !Ref TravisCiUserAccessKey
+  TravisCiUserSecretAccessKey:
+    Value: !GetAtt TravisCiUserAccessKey.SecretAccessKey
