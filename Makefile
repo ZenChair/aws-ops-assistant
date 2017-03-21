@@ -14,13 +14,8 @@ test: unit-test scenario-test
 unit-test:
 	go test $(SRC_DIR)
 
-scenario-test: install-nodejs
+scenario-test:
 	(cd scenario-test && npm test)
 
 get-deps:
 	go get -u github.com/golang/lint/golint
-
-install-nodejs:
-ifeq ($(TRAVIS), true)
-	nvm install v6
-endif

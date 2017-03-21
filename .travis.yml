@@ -1,6 +1,8 @@
 language: go
 go:
 - 1.7
+before_script:
+- nvm install v6
 script:
 - make validate-syntax
 - make lint
