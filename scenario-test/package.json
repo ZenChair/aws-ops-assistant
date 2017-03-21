@@ -1,0 +1,12 @@
+{
+  "name": "scenario-test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^2.0.0-rc.9",
+    "mocha": "^3.2.0"
+  }
+}

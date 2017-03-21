@@ -1,0 +1,11 @@
+{
+    "slack.token": "TOKEN",
+    "slack.teamId": "TEAM_ID",
+    "slack.teamDomain": "TEAM_DOMAIN",
+    "slack.channelId": "CHANNEL_ID",
+    "slack.channelName": "CHANNEL_NAME",
+    "slack.userId": "USER_ID",
+    "slack.userName": "USER_NAME",
+    "slack.responseUrl": "RESPONSE_URL",
+    "awsOpsAssistantEndpont": "https://fake-aws-ops-assistant.zenchair.com/slack"
+}
