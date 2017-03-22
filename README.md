@@ -2,6 +2,11 @@
 
 # AWS Ops Assistant
 
+## Prerequisites
+
+* go v1.7
+* node v6 (for executing scenario tests)
+
 ## CI/CD
 
 We use [Travis CI](https://travis-ci.org/ZenChair/aws-ops-assistant).
