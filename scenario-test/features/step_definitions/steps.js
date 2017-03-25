@@ -12,25 +12,24 @@ defineSupportCode(({Given, When, Then}) => {
 
     let context;
 
-    Given('I am on slack and ready to post a command comment', done => {
-        configLoader.load(__dirname + '/../../config.json')
+    Given('I am on slack and ready to post a command comment', () => {
+        return configLoader.load(__dirname + '/../../config.json')
             .then(config => {
                 context = new Context({config});
-            })
-            .then(done, done);
+            });
     });
 
-    When('I post {stringInDoubleQuotes} comment', (comment, done) => {
+    When('I post {stringInDoubleQuotes} comment', comment => {
         const slackApp = context.getAltSlackApp();
-        slackApp.postComment(comment).then(done, done);
+        return slackApp.postComment(comment);
     });
 
-    Then('I should get a version number', done => {
-        delay(0.1).then(() => {
+    Then('I should get a version number', () => {
+        return delay(0.1).then(() => {
             const httpRequestStore = context.getHttpRequestStore();
             const lastRecord = httpRequestStore.getLastRequest();
             expect(lastRecord).to.eql('{"text":"0.0.1"}');
-        }).then(done, done);
+        });
     });
 
 });
