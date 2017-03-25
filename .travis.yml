@@ -3,7 +3,7 @@ go:
 - 1.7
 - 1.8
 before_script:
-- nvm use
+- nvm install
 script:
 - make validate-syntax
 - make lint
